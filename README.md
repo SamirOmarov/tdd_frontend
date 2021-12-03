@@ -1,70 +1,78 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">
+  <br>
+  <a href="https://samiromarov.github.io/tdd_frontend/"><img src="https://reactjs.org/logo-og.png" alt="React" width="500"></a>
+  <br>
+  TDD React Todo App
+  <br>
+</h1>
 
-## Available Scripts
+<h4 align="center">A minimal Todo App built on top of <a href="https://reactjs.org/" target="_blank">React</a>.</h4>
 
-In the project directory, you can run:
 
-### `yarn start`
+![CI/CD](https://github.com/samiromarov/tdd_frontend/workflows/CI/CD/badge.svg)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<p align="center">
+  <a href="#architectural-decisions">Architectural Decisions</a> •
+  <a href="#how-to-use">How To Use</a> •
+</p>
 
-### `yarn test`
+![screenshot](https://s10.gifyu.com/images/ezgif.com-gif-makera563459ec324bb77.gif)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Architectural Decisions
 
-### `yarn build`
+* Simple React Application created with create-react-app
+  - Create React App is **a comfortable environment for learning React**, and is the best way to start building a new single-page application in React.
+* Test Driven Development
+  - With Jest &  Testing Library
+  - To test React Components following libraries were used:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+	1.  **@testing-library/jest-dom**. We are going to use this to make assertions about the state of the DOM using custom jest matchers for the DOM.
+	2.  **@testing-library/react**. It provides APIs for us to work with React components in our tests.
+	3.  **@testing-library/user-event**. It provides us with API to simulate real events(such as click) in the browser as the user interacts with the DOM. The @testing-library/react library already provides a `userEvent` function to simulate events, but @testing-library/user-event provides a more advanced simulation.
+* TailwindCSS used for simple styling
+* Deployment configuration were written for Docker 
+  - Becasue I used github pages for deploying instead of AWS/DigitalOcean Docker images were not needed.
+  
+* Deployed on Github Pages w/o need of Docker images
+* GitHub Actions were used to automate, customize, and execute software development workflows right in  GitHub repository for CI/CD. 
+  - Workflow can be seen in /[.github](https://github.com/SamirOmarov/tdd_frontend/tree/main/.github)/**workflows**/ci.yml
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## How To Use
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+# Clone this repository
+$ git clone https://github.com/SamirOmarov/tdd_frontend
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# Go into the repository
+$ cd tdd_frontend
 
-## Learn More
+# Install dependencies
+$ yarn install
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Run the tests
+$ yarn test
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Run the app
+$ yarn start
+```
 
-### Code Splitting
+To run the docker version: From your command line:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+# Build and tag docker image
+$ docker build -t my-app:dev .
 
-### Analyzing the Bundle Size
+# Run the container once the build is done
+$ docker run -it -p 3000:3000 my-app:dev
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Build and run our production image
+$ docker build -f Dockerfile-prod -t my-app:prod .
+$ docker run -itd -p 80:80 --rm my-app:prod
+```
