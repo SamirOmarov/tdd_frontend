@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { PlusIcon } from "@heroicons/react/outline";
 import Todo from "./Todo";
+import axios from "axios";
 
-const TodoList = ({ todos = [] }) => {
+const TodoList = ({ todos, setTodos }) => {
+  const [inputText, setInputText] = useState("");
+
+  const inputTextHandler = (e) => {
+    setInputText(e.target.value);
+  };
+
+  const createTodo = async (e) => {
+    e.preventDefault();
+    await axios.post("https://vast-ridge-58692.herokuapp.com/todo/", {
+      title: inputText,
+    });
+    axios.get("https://vast-ridge-58692.herokuapp.com/todo/").then((result) => {
+      setTodos(result.data);
+    });
+    setInputText("");
+  };
+
   return (
     <div>
       <form className="w-full max-w-xl">
@@ -12,14 +30,14 @@ const TodoList = ({ todos = [] }) => {
             type="text"
             placeholder="Create a new task"
             data-testid="input-field"
-            // value={}
-            // onChange={}
+            value={inputText}
+            onChange={inputTextHandler}
           />
           <button
             className="p-2 w-10 h-10 bg-green-500 hover:bg-green-700 rounded "
             type="submit"
             data-testid="submit-button"
-            // onClick={}
+            onClick={createTodo}
           >
             <PlusIcon className="text-white w-6 h-6" />
           </button>
