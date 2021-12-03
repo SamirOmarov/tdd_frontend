@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/tdd_frontend/static/css/main.477de1e6.chunk.css",
+    "main.js": "/tdd_frontend/static/js/main.35020fed.chunk.js",
+    "main.js.map": "/tdd_frontend/static/js/main.35020fed.chunk.js.map",
+    "runtime-main.js": "/tdd_frontend/static/js/runtime-main.17abd5bf.js",
+    "runtime-main.js.map": "/tdd_frontend/static/js/runtime-main.17abd5bf.js.map",
+    "static/js/2.378078ed.chunk.js": "/tdd_frontend/static/js/2.378078ed.chunk.js",
+    "static/js/2.378078ed.chunk.js.map": "/tdd_frontend/static/js/2.378078ed.chunk.js.map",
+    "static/js/3.0392d0aa.chunk.js": "/tdd_frontend/static/js/3.0392d0aa.chunk.js",
+    "static/js/3.0392d0aa.chunk.js.map": "/tdd_frontend/static/js/3.0392d0aa.chunk.js.map",
+    "index.html": "/tdd_frontend/index.html",
+    "static/css/main.477de1e6.chunk.css.map": "/tdd_frontend/static/css/main.477de1e6.chunk.css.map",
+    "static/js/2.378078ed.chunk.js.LICENSE.txt": "/tdd_frontend/static/js/2.378078ed.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.17abd5bf.js",
+    "static/js/2.378078ed.chunk.js",
+    "static/css/main.477de1e6.chunk.css",
+    "static/js/main.35020fed.chunk.js"
+  ]
+}
