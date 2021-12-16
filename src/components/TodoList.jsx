@@ -8,6 +8,7 @@ const TodoList = ({ todos, setTodos }) => {
 
   const inputTextHandler = (e) => {
     setInputText(e.target.value);
+    console.log(inputText);
   };
 
   const createTodo = async (e) => {
@@ -47,7 +48,7 @@ const TodoList = ({ todos, setTodos }) => {
         <h1 className="text-3xl px-32 py-8">You have no task!</h1>
       )}
       {todos.map((todo, i) => (
-        <Todo key={i} todo={todo} />
+        <Todo key={i} id={i} todo={todo} setTodos={setTodos}/>
       ))}
     </div>
   );

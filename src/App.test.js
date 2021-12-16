@@ -9,12 +9,3 @@ test('renders without crashing', () => {
   expect(heading).toBeInTheDocument();
 });
 
-// describe('<App /> tests', () => {
-//   it("add button is pressed, it creates a new todo item", () => {
-//     render(<App />);
-
-//     // userEvent.type(screen.getByTestId("input-field"), "Create tests");
-//     // expect(screen.getByTestId("input-field").value).toBe("Create tests");
-
-//   });
-// });

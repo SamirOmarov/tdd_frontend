@@ -6,12 +6,6 @@ import axios from "axios";
 
 function App() {
   const [todos, setTodos] = useState([]);
-
-  // useEffect(() => {
-  //   axios.get("https://vast-ridge-58692.herokuapp.com/todo/")
-  //     .then((result) => { setTodos(result.data) })
-  // }, [])
-
   useEffect(() => {
     const getTodos = async () => {
       const response = await axios.get("https://vast-ridge-58692.herokuapp.com/todo/")
